@@ -8,7 +8,7 @@ class Ball extends Objekt{
    G.y = 0.011*size;
    lokation.x = 200;
    lokation.y = 900;
-   Power = new PVector((mouseX-lokation.x),(mouseY-lokation.y));
+   Power = new PVector((mouseX-200),(mouseY-900));
    Power.limit(PowerLimit);
    Velocity.add(Power);
   }

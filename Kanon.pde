@@ -1,16 +1,19 @@
-ArrayList<Ball> balls = new ArrayList<Ball>();
+ArrayList<Objekt> ting = new ArrayList<Objekt>();
 float counter,barY = 250;
 boolean skyd = false;
 PImage bar;
 
+
 void setup(){
 fullScreen();
 bar = loadImage ("Bar.png");
+ting.add(new Skib());
+
 }
 
 void draw(){
   background(209, 227, 255);
-  for(Ball r: balls){
+  for(Objekt r: ting){
     r.update();
   }
   fill(255);
@@ -26,6 +29,6 @@ void keyPressed(){
 }
 
 void mouseClicked(){
-  balls.add(new Ball(counter));
+  ting.add(new Ball(counter));
   counter = 0;
 }
