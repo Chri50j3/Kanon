@@ -1,14 +1,13 @@
 
-class ball{
+class Ball extends Objekt{
   float size,angle = PI/size;
-  PVector lokation = new PVector(200,900);
-  PVector Velocity = new PVector();
-  PVector G = new PVector();
   PVector Power;
   
-  ball(float PowerLimit){
+  Ball(float PowerLimit){
    size = 25;
    G.y = 0.011*size;
+   lokation.x = 200;
+   lokation.y = 900;
    Power = new PVector((mouseX-lokation.x),(mouseY-lokation.y));
    Power.limit(PowerLimit);
    Velocity.add(Power);

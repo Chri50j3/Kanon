@@ -1,0 +1,4 @@
+class Skib extends Objekt{
+
+  
+}
