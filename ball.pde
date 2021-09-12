@@ -1,6 +1,6 @@
 
 class Ball extends Objekt{
-  float size,angle = PI/size;
+  float angle = PI/size;
   PVector Power;
   PImage boom;
   float start;
@@ -29,6 +29,10 @@ class Ball extends Objekt{
     if(start > millis()){
       image(boom,Ix,Iy,200,200);
     }
+    
+    // slet når uden for skærm
+    if(lokation.y > height)
+      ting.remove(this);
   }
   
   void hit(){
@@ -36,6 +40,7 @@ class Ball extends Objekt{
     start = millis()+1000;
     Ix = lokation.x-100;
     Iy = lokation.y-100;
+    ting.get(1).HP -= 100;
   }
   
 }

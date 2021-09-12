@@ -1,6 +1,5 @@
 class Skib extends Objekt{
   PImage skib;
-  float size = 2;
   PVector vinkel;
   boolean player;
 
@@ -13,6 +12,7 @@ class Skib extends Objekt{
     lokation.y = y_;
     vinkel = new PVector();
     player = player_;
+    size = 2;
   }
   
   void update(){
@@ -35,5 +35,19 @@ class Skib extends Objekt{
       line(lokation.x+310,lokation.y+120,lokation.x+280,lokation.y+120);
     }
     strokeWeight(1);
+    
+    textSize(20);
+    text(HP + "%" + " HP", lokation.x , lokation.y - 50);
+    
+    if(HP <= 0){
+      ting.remove(this);
+      slut = true;
+      vandt = true;
+    }
   }
+  
+  void skyd(){
+    ting.add(new Ball(random(10,30)));
+  }
+  
 }

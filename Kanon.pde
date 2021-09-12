@@ -2,6 +2,8 @@ ArrayList<Objekt> ting = new ArrayList<Objekt>();
 float counter,barY = 250;
 boolean skyd = false;
 PImage bar;
+int ArrayLength;
+boolean slut = false, vandt = false;
 
 //verden
 PImage ocean;
@@ -16,6 +18,8 @@ void setup(){
   bar = loadImage ("Bar.png");
   ting.add(new Skib(130,800,true));
   ting.add(new Skib(1500,800,false));
+  frameRate(60);
+  textAlign(CENTER);
   
   //verden
   ocean = loadImage("ocean.png");
@@ -49,12 +53,25 @@ void draw(){
   
   //ik verden
   for(Objekt r: ting){
+    ArrayLength = ting.size();
     r.update();
+    if(ArrayLength != ting.size())
+      break;
   }
   fill(255);
   barY = 250-counter*6.66;
   image(bar,50,50,50,200);
   rect(50,barY,60,10);
+  
+  if(slut){
+    textSize(200);
+    if(vandt)
+      text("You won!",width/2,height/2);
+    else
+      text("Game over!",width/2,height/2);
+
+    
+  }
  
 }
 void keyPressed(){
