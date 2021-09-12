@@ -28,7 +28,7 @@ void setup(){
 }
 
 void draw(){
-  //verden
+  //baggrund
   background(131, 200, 242);
   image(ocean, oceanX - 50, height - height/2, width + 100, height/2);
   image(cloud, 70, 100, 350, 150);
@@ -51,7 +51,7 @@ void draw(){
     oceanX++;
   }
   
-  //ik verden
+  //forgrund
   for(Objekt r: ting){
     ArrayLength = ting.size();
     r.update();
@@ -69,11 +69,10 @@ void draw(){
       text("You won!",width/2,height/2);
     else
       text("Game over!",width/2,height/2);
-
-    
   }
- 
 }
+
+//giver power når man trykker mellemrum
 void keyPressed(){
   if(keyCode == ' '){
     counter ++;
@@ -81,7 +80,9 @@ void keyPressed(){
   }
 }
 
+//affyre begge kanoner
 void mouseClicked(){
-  ting.add(new Ball(counter));
+  ting.add(new Ball(counter,true));
   counter = 0;
+  ting.get(1).skyd();
 }

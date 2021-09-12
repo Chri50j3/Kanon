@@ -7,5 +7,5 @@ class Objekt{
 
   
   void update(){}
-  void display(){}
+  void skyd(){}
 }

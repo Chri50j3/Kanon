@@ -19,18 +19,21 @@ class Skib extends Objekt{
     image(skib,lokation.x,lokation.y,189*size,141*size);
     strokeWeight(20);
     if(player){
+      //kanonen
       vinkel.x = (mouseX-(lokation.x+70));
       vinkel.y = (mouseY-(lokation.y+120));
       vinkel.limit(30);
       line(lokation.x+70,lokation.y+120,lokation.x+70+vinkel.x,lokation.y+120+vinkel.y);
       strokeWeight(0);
       
+      //sigteprikker
       for(int i = 1; i < 25; i+=5){
         fill(255);
         circle(lokation.x + 70 + vinkel.x*i, lokation.y+120 + vinkel.y*i, 10);
       }
       
     }
+    //det andet skibs kanon
     else if(!player){
       line(lokation.x+310,lokation.y+120,lokation.x+280,lokation.y+120);
     }
@@ -39,15 +42,17 @@ class Skib extends Objekt{
     textSize(20);
     text(HP + "%" + " HP", lokation.x , lokation.y - 50);
     
+    //når et skib dør
     if(HP <= 0){
       ting.remove(this);
       slut = true;
-      vandt = true;
+      vandt = !player;
     }
   }
   
+  //får modstander til at skyde
   void skyd(){
-    ting.add(new Ball(random(10,30)));
+    if(!player)
+      ting.add(new Ball(random(20,30),false));
   }
-  
 }
